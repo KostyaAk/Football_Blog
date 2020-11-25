@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using football_blog.Models;
+using football_blog.Service;
 
 namespace football_blog
 {
@@ -25,6 +26,18 @@ namespace football_blog
             services.AddControllersWithViews();
             services.AddDbContext<SiteContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.User.RequireUniqueEmail = true;    // уникальный email
+                opts.User.AllowedUserNameCharacters = "._1234567890@abcdefghijklmnopqrstuvwxyz";
+
+            })
+                 .AddEntityFrameworkStores<SiteContext>()
+                .AddDefaultTokenProviders();
+            services.AddDbContext<SiteContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("football_blog")));
+            services.AddTransient<ISender, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

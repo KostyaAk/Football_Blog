@@ -13,9 +13,9 @@ namespace football_blog.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> loggers)
+        public HomeController(ILogger<HomeController> logger)
         {
-            _logger = loggers;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -24,6 +24,11 @@ namespace football_blog.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }
