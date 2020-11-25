@@ -49,5 +49,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="wwwroot\Files\clubs\" />
+    <Folder Include="wwwroot\Files\posts\" />
+  </ItemGroup>
 
 </Project>

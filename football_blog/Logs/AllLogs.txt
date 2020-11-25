@@ -400,3 +400,320 @@ WHERE [a].[UserId] = @__userId_0
 2020-11-25 19:47:45.193 +03:00 [INF] Executing endpoint 'football_blog.Controllers.HomeController.About (football_blog)'
 2020-11-25 19:47:45.208 +03:00 [INF] Route matched with {action = "About", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult About() on controller football_blog.Controllers.HomeController (football_blog).
 2020-11-25 19:47:45.214 +03:00 [INF] Executing ViewResult, running view About.
+2020-11-25 20:27:55.606 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:27:58.178 +03:00 [INF] Executed DbCommand (436ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-25 20:27:58.502 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-25 20:27:58.591 +03:00 [INF] Executed DbCommand (52ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-25 20:27:59.701 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/  
+2020-11-25 20:27:59.823 +03:00 [INF] Executing endpoint 'football_blog.Controllers.HomeController.Index (football_blog)'
+2020-11-25 20:27:59.878 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller football_blog.Controllers.HomeController (football_blog).
+2020-11-25 20:27:59.925 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 20:28:00.403 +03:00 [INF] Executed ViewResult - view Index executed in 484.3624ms.
+2020-11-25 20:28:00.405 +03:00 [INF] Executed action football_blog.Controllers.HomeController.Index (football_blog) in 526.4101ms
+2020-11-25 20:28:00.406 +03:00 [INF] Executed endpoint 'football_blog.Controllers.HomeController.Index (football_blog)'
+2020-11-25 20:28:00.417 +03:00 [INF] Request finished in 723.9363ms 200 text/html; charset=utf-8
+2020-11-25 20:28:00.753 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:28:00.833 +03:00 [INF] Request finished in 80.2675ms 404 
+2020-11-25 20:28:01.163 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/img/F1.jpg  
+2020-11-25 20:28:01.190 +03:00 [INF] The file /img/F1.jpg was not modified
+2020-11-25 20:28:01.192 +03:00 [INF] Request finished in 44.1535ms 304 image/jpeg
+2020-11-25 20:28:01.194 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/img/F3.jpg  
+2020-11-25 20:28:01.195 +03:00 [INF] The file /img/F3.jpg was not modified
+2020-11-25 20:28:01.196 +03:00 [INF] Request finished in 2.1126ms 304 image/jpeg
+2020-11-25 20:33:26.179 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs  
+2020-11-25 20:33:26.186 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:33:26.285 +03:00 [INF] Route matched with {action = "Index", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:33:26.483 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:33:26.869 +03:00 [INF] Executed DbCommand (334ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+2020-11-25 20:33:26.909 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 20:33:27.282 +03:00 [INF] Executed ViewResult - view Index executed in 380.145ms.
+2020-11-25 20:33:27.285 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Index (football_blog) in 999.2987ms
+2020-11-25 20:33:27.289 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:33:27.294 +03:00 [INF] Request finished in 1175.507ms 200 text/html; charset=utf-8
+2020-11-25 20:33:27.460 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:33:27.463 +03:00 [INF] Request finished in 3.384ms 404 
+2020-11-25 20:38:54.260 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Create  
+2020-11-25 20:38:54.279 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Create (football_blog)'
+2020-11-25 20:38:54.292 +03:00 [INF] Route matched with {action = "Create", controller = "Clubs"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:38:54.296 +03:00 [INF] Executing ViewResult, running view Create.
+2020-11-25 20:38:54.462 +03:00 [INF] Executed ViewResult - view Create executed in 168.3794ms.
+2020-11-25 20:38:54.463 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Create (football_blog) in 170.4555ms
+2020-11-25 20:38:54.463 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Create (football_blog)'
+2020-11-25 20:38:54.463 +03:00 [INF] Request finished in 203.5911ms 200 text/html; charset=utf-8
+2020-11-25 20:38:54.546 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/lib/jquery-validation/dist/jquery.validate.min.js  
+2020-11-25 20:38:54.548 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js  
+2020-11-25 20:38:54.590 +03:00 [INF] Sending file. Request path: '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'. Physical path: 'C:\Users\Алина Садовская\source\repos\football_blog\football_blog\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js'
+2020-11-25 20:38:54.590 +03:00 [INF] Request finished in 42.0626ms 200 application/javascript
+2020-11-25 20:38:54.617 +03:00 [INF] Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: 'C:\Users\Алина Садовская\source\repos\football_blog\football_blog\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js'
+2020-11-25 20:38:54.617 +03:00 [INF] Request finished in 71.5516ms 200 application/javascript
+2020-11-25 20:40:20.426 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44348/Clubs/Create multipart/form-data; boundary=----WebKitFormBoundary7h7KJ927sZfPvDFF 73811
+2020-11-25 20:40:20.436 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Create (football_blog)'
+2020-11-25 20:40:20.521 +03:00 [INF] Route matched with {action = "Create", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(football_blog.Models.Club, Microsoft.AspNetCore.Http.IFormFile) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:40:20.697 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:40:21.635 +03:00 [INF] Executed DbCommand (121ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Clubs] ([ClubDescription], [ClubImage], [ClubName])
+VALUES (@p0, @p1, @p2);
+SELECT [ClubId]
+FROM [Clubs]
+WHERE @@ROWCOUNT = 1 AND [ClubId] = scope_identity();
+2020-11-25 20:40:21.726 +03:00 [INF] Executing RedirectResult, redirecting to /Clubs.
+2020-11-25 20:40:21.727 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Create (football_blog) in 1205.4733ms
+2020-11-25 20:40:21.727 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Create (football_blog)'
+2020-11-25 20:40:21.729 +03:00 [INF] Request finished in 1307.387ms 302 
+2020-11-25 20:40:21.737 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs  
+2020-11-25 20:40:21.738 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:40:21.738 +03:00 [INF] Route matched with {action = "Index", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:40:21.740 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:40:21.743 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+2020-11-25 20:40:21.746 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 20:40:21.771 +03:00 [INF] Executed ViewResult - view Index executed in 25.3276ms.
+2020-11-25 20:40:21.771 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Index (football_blog) in 32.8037ms
+2020-11-25 20:40:21.771 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:40:21.772 +03:00 [INF] Request finished in 34.4928ms 200 text/html; charset=utf-8
+2020-11-25 20:40:21.906 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Files/MYu.jpg  
+2020-11-25 20:40:21.994 +03:00 [INF] Sending file. Request path: '/Files/MYu.jpg'. Physical path: 'C:\Users\Алина Садовская\source\repos\football_blog\football_blog\wwwroot\Files\MYu.jpg'
+2020-11-25 20:40:21.995 +03:00 [INF] Request finished in 88.0925ms 200 image/jpeg
+2020-11-25 20:40:22.018 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:40:22.023 +03:00 [INF] Request finished in 7.5879ms 404 
+2020-11-25 20:42:15.875 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Details/1  
+2020-11-25 20:42:15.883 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Details (football_blog)'
+2020-11-25 20:42:15.902 +03:00 [INF] Route matched with {action = "Details", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:42:15.913 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:42:15.954 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+WHERE [c].[ClubId] = @__id_0
+2020-11-25 20:42:15.958 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-25 20:42:16.095 +03:00 [INF] Executed ViewResult - view Details executed in 138.2997ms.
+2020-11-25 20:42:16.095 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Details (football_blog) in 192.4915ms
+2020-11-25 20:42:16.095 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Details (football_blog)'
+2020-11-25 20:42:16.096 +03:00 [INF] Request finished in 221.4391ms 200 text/html; charset=utf-8
+2020-11-25 20:42:16.260 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Files/MYu.jpg  
+2020-11-25 20:42:16.260 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:42:16.261 +03:00 [INF] Request finished in 1.2335ms 404 
+2020-11-25 20:42:16.287 +03:00 [INF] The file /Files/MYu.jpg was not modified
+2020-11-25 20:42:16.289 +03:00 [INF] Request finished in 28.8467ms 304 image/jpeg
+2020-11-25 20:42:16.295 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:42:16.296 +03:00 [INF] Request finished in 0.8141ms 404 
+2020-11-25 20:48:10.192 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Edit/1  
+2020-11-25 20:48:10.202 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:10.214 +03:00 [INF] Route matched with {action = "Edit", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:10.220 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:10.327 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+WHERE [c].[ClubId] = @__p_0
+2020-11-25 20:48:10.331 +03:00 [INF] Executing ViewResult, running view Edit.
+2020-11-25 20:48:10.393 +03:00 [INF] Executed ViewResult - view Edit executed in 64.1559ms.
+2020-11-25 20:48:10.394 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Edit (football_blog) in 179.1337ms
+2020-11-25 20:48:10.394 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:10.394 +03:00 [INF] Request finished in 203.1323ms 200 text/html; charset=utf-8
+2020-11-25 20:48:10.545 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Files/MYu.jpg  
+2020-11-25 20:48:10.547 +03:00 [INF] The file /Files/MYu.jpg was not modified
+2020-11-25 20:48:10.548 +03:00 [INF] Request finished in 3.1081ms 304 image/jpeg
+2020-11-25 20:48:17.064 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44348/Clubs/Edit/1 multipart/form-data; boundary=----WebKitFormBoundary8crtrA2pJ3w4kpad 1909
+2020-11-25 20:48:17.064 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:17.080 +03:00 [INF] Route matched with {action = "Edit", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Int32, football_blog.Models.Club) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:17.095 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:17.406 +03:00 [INF] Executed DbCommand (295ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Clubs] SET [ClubDescription] = @p0, [ClubImage] = @p1, [ClubName] = @p2
+WHERE [ClubId] = @p3;
+SELECT @@ROWCOUNT;
+2020-11-25 20:48:17.415 +03:00 [INF] Executing RedirectResult, redirecting to /Clubs.
+2020-11-25 20:48:17.417 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Edit (football_blog) in 335.6046ms
+2020-11-25 20:48:17.417 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:17.419 +03:00 [INF] Request finished in 355.5991ms 302 
+2020-11-25 20:48:17.425 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs  
+2020-11-25 20:48:17.425 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:48:17.425 +03:00 [INF] Route matched with {action = "Index", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:17.427 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:17.437 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+2020-11-25 20:48:17.443 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 20:48:17.450 +03:00 [INF] Executed ViewResult - view Index executed in 7.0713ms.
+2020-11-25 20:48:17.450 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Index (football_blog) in 24.4032ms
+2020-11-25 20:48:17.450 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:48:17.450 +03:00 [INF] Request finished in 25.7874ms 200 text/html; charset=utf-8
+2020-11-25 20:48:17.610 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:48:17.627 +03:00 [INF] Request finished in 17.6591ms 404 
+2020-11-25 20:48:19.857 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Details/1  
+2020-11-25 20:48:19.857 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Details (football_blog)'
+2020-11-25 20:48:19.858 +03:00 [INF] Route matched with {action = "Details", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:19.863 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:19.893 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+WHERE [c].[ClubId] = @__id_0
+2020-11-25 20:48:19.896 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-25 20:48:19.909 +03:00 [INF] Executed ViewResult - view Details executed in 13.4547ms.
+2020-11-25 20:48:19.914 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Details (football_blog) in 55.9725ms
+2020-11-25 20:48:19.914 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Details (football_blog)'
+2020-11-25 20:48:19.914 +03:00 [INF] Request finished in 58.0509ms 200 text/html; charset=utf-8
+2020-11-25 20:48:20.096 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:48:20.107 +03:00 [INF] Request finished in 11.6349ms 404 
+2020-11-25 20:48:22.519 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Edit/1  
+2020-11-25 20:48:22.519 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:22.521 +03:00 [INF] Route matched with {action = "Edit", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:22.527 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:22.562 +03:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+WHERE [c].[ClubId] = @__p_0
+2020-11-25 20:48:22.575 +03:00 [INF] Executing ViewResult, running view Edit.
+2020-11-25 20:48:22.609 +03:00 [INF] Executed ViewResult - view Edit executed in 34.0976ms.
+2020-11-25 20:48:22.609 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Edit (football_blog) in 87.1659ms
+2020-11-25 20:48:22.609 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:22.611 +03:00 [INF] Request finished in 97.8255ms 200 text/html; charset=utf-8
+2020-11-25 20:48:45.249 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44348/Clubs/Edit/1 multipart/form-data; boundary=----WebKitFormBoundaryWpD2lvR8yhBg6ayT 73905
+2020-11-25 20:48:45.251 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:45.251 +03:00 [INF] Route matched with {action = "Edit", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Int32, football_blog.Models.Club) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:45.502 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:45.528 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Clubs] SET [ClubDescription] = @p0, [ClubImage] = @p1, [ClubName] = @p2
+WHERE [ClubId] = @p3;
+SELECT @@ROWCOUNT;
+2020-11-25 20:48:45.542 +03:00 [INF] Executing RedirectResult, redirecting to /Clubs.
+2020-11-25 20:48:45.542 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Edit (football_blog) in 291.3042ms
+2020-11-25 20:48:45.543 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:45.558 +03:00 [INF] Request finished in 310.023ms 302 
+2020-11-25 20:48:45.562 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs  
+2020-11-25 20:48:45.563 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:48:45.563 +03:00 [INF] Route matched with {action = "Index", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:45.563 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:45.567 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+2020-11-25 20:48:45.568 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 20:48:45.582 +03:00 [INF] Executed ViewResult - view Index executed in 13.7519ms.
+2020-11-25 20:48:45.582 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Index (football_blog) in 18.9972ms
+2020-11-25 20:48:45.582 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:48:45.582 +03:00 [INF] Request finished in 20.1577ms 200 text/html; charset=utf-8
+2020-11-25 20:48:45.761 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:48:45.776 +03:00 [INF] Request finished in 15.1725ms 404 
+2020-11-25 20:48:51.783 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Details/1  
+2020-11-25 20:48:51.788 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Details (football_blog)'
+2020-11-25 20:48:51.789 +03:00 [INF] Route matched with {action = "Details", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:51.792 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:51.798 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+WHERE [c].[ClubId] = @__id_0
+2020-11-25 20:48:51.799 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-25 20:48:51.805 +03:00 [INF] Executed ViewResult - view Details executed in 5.4874ms.
+2020-11-25 20:48:51.805 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Details (football_blog) in 15.561ms
+2020-11-25 20:48:51.805 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Details (football_blog)'
+2020-11-25 20:48:51.806 +03:00 [INF] Request finished in 22.9407ms 200 text/html; charset=utf-8
+2020-11-25 20:48:51.883 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:48:51.905 +03:00 [INF] Request finished in 22.4583ms 404 
+2020-11-25 20:48:53.876 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs/Edit/1  
+2020-11-25 20:48:53.877 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:53.877 +03:00 [INF] Route matched with {action = "Edit", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Nullable`1[System.Int32]) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:48:53.879 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:48:53.896 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+WHERE [c].[ClubId] = @__p_0
+2020-11-25 20:48:53.897 +03:00 [INF] Executing ViewResult, running view Edit.
+2020-11-25 20:48:53.913 +03:00 [INF] Executed ViewResult - view Edit executed in 15.9975ms.
+2020-11-25 20:48:53.914 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Edit (football_blog) in 36.6937ms
+2020-11-25 20:48:53.914 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:48:53.914 +03:00 [INF] Request finished in 49.1184ms 200 text/html; charset=utf-8
+2020-11-25 20:49:03.327 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44348/Clubs/Edit/1 multipart/form-data; boundary=----WebKitFormBoundaryA5qip5slT4zV3BAK 73905
+2020-11-25 20:49:03.328 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:49:03.328 +03:00 [INF] Route matched with {action = "Edit", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(Int32, football_blog.Models.Club) on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:49:03.351 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:49:03.389 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Clubs] SET [ClubDescription] = @p0, [ClubImage] = @p1, [ClubName] = @p2
+WHERE [ClubId] = @p3;
+SELECT @@ROWCOUNT;
+2020-11-25 20:49:03.393 +03:00 [INF] Executing RedirectResult, redirecting to /Clubs.
+2020-11-25 20:49:03.393 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Edit (football_blog) in 64.3829ms
+2020-11-25 20:49:03.393 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Edit (football_blog)'
+2020-11-25 20:49:03.410 +03:00 [INF] Request finished in 83.2039ms 302 
+2020-11-25 20:49:03.445 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs  
+2020-11-25 20:49:03.447 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:49:03.447 +03:00 [INF] Route matched with {action = "Index", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 20:49:03.449 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 20:49:03.453 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubDescription], [c].[ClubImage], [c].[ClubName]
+FROM [Clubs] AS [c]
+2020-11-25 20:49:03.454 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 20:49:03.458 +03:00 [INF] Executed ViewResult - view Index executed in 4.4273ms.
+2020-11-25 20:49:03.459 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Index (football_blog) in 11.2642ms
+2020-11-25 20:49:03.459 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 20:49:03.459 +03:00 [INF] Request finished in 14.4826ms 200 text/html; charset=utf-8
+2020-11-25 20:49:03.557 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:49:03.570 +03:00 [INF] Request finished in 12.8968ms 404 
+2020-11-25 20:49:03.609 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 20:49:03.609 +03:00 [INF] Request finished in 0.4873ms 404 
+2020-11-25 21:12:26.511 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'SiteContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-11-25 21:12:29.451 +03:00 [INF] Executed DbCommand (173ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-25 21:12:29.641 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-25 21:12:29.708 +03:00 [INF] Executed DbCommand (39ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-25 21:12:30.477 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/  
+2020-11-25 21:12:30.559 +03:00 [INF] Executing endpoint 'football_blog.Controllers.HomeController.Index (football_blog)'
+2020-11-25 21:12:30.625 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller football_blog.Controllers.HomeController (football_blog).
+2020-11-25 21:12:30.667 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-25 21:12:30.924 +03:00 [INF] Executed ViewResult - view Index executed in 262.8386ms.
+2020-11-25 21:12:30.926 +03:00 [INF] Executed action football_blog.Controllers.HomeController.Index (football_blog) in 300.0025ms
+2020-11-25 21:12:30.927 +03:00 [INF] Executed endpoint 'football_blog.Controllers.HomeController.Index (football_blog)'
+2020-11-25 21:12:30.940 +03:00 [INF] Request finished in 473.8209ms 200 text/html; charset=utf-8
+2020-11-25 21:12:31.237 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/fonts/flaticon/font/flaticon.css  
+2020-11-25 21:12:31.319 +03:00 [INF] Request finished in 82.0303ms 404 
+2020-11-25 21:12:31.638 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/img/F3.jpg  
+2020-11-25 21:12:31.640 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/img/F1.jpg  
+2020-11-25 21:12:31.911 +03:00 [INF] The file /img/F3.jpg was not modified
+2020-11-25 21:12:31.911 +03:00 [INF] The file /img/F1.jpg was not modified
+2020-11-25 21:12:31.915 +03:00 [INF] Request finished in 277.7887ms 304 image/jpeg
+2020-11-25 21:12:31.915 +03:00 [INF] Request finished in 277.4442ms 304 image/jpeg
+2020-11-25 21:14:20.383 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44348/Clubs  
+2020-11-25 21:14:20.396 +03:00 [INF] Executing endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 21:14:20.412 +03:00 [INF] Route matched with {action = "Index", controller = "Clubs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller football_blog.Controllers.ClubsController (football_blog).
+2020-11-25 21:14:20.429 +03:00 [INF] Executed action football_blog.Controllers.ClubsController.Index (football_blog) in 16.5229ms
+2020-11-25 21:14:20.432 +03:00 [INF] Executed endpoint 'football_blog.Controllers.ClubsController.Index (football_blog)'
+2020-11-25 21:14:20.439 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'football_blog.Service.ImageService' while attempting to activate 'football_blog.Controllers.ClubsController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-11-25 21:14:20.653 +03:00 [INF] Request finished in 269.6663ms 500 text/html; charset=utf-8

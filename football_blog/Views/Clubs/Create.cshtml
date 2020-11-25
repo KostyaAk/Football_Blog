@@ -1,0 +1,36 @@
+﻿@model football_blog.Models.Club
+
+@{ ViewData["Title"] = "Create"; }
+
+<h1>Create</h1>
+<h4>Club</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClubName" class="control-label"></label>
+                <input asp-for="ClubName" class="form-control" />
+                <span asp-validation-for="ClubName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClubDescription" class="control-label"></label>
+                <input asp-for="ClubDescription" class="form-control" />
+                <span asp-validation-for="ClubDescription" class="text-danger"></span>
+            </div>
+            <div class="editor-label">Файл изображения</div>
+            <div class="editor-field">
+                <input type="file" name="uploadedFile" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
