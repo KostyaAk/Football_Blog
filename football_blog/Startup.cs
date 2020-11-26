@@ -38,6 +38,7 @@ namespace football_blog
             services.AddDbContext<SiteContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("football_blog")));
             services.AddTransient<ISender, EmailService>();
+            services.AddSingleton<ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

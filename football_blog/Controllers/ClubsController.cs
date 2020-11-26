@@ -19,21 +19,21 @@ namespace football_blog.Controllers
         private readonly SiteContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
         private readonly ImageService _imageService;
-        public ClubsController(SiteContext context, IWebHostEnvironment appEnvironment, ImageService imageService )
+        public ClubsController(SiteContext context, IWebHostEnvironment appEnvironment, ImageService imageService)
         {
-                _context = context;
-                _appEnvironment = appEnvironment;
-                _imageService = imageService;
+            _context = context;
+            _appEnvironment = appEnvironment;
+            _imageService = imageService;
         }
 
-       
+
 
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clubs.ToListAsync());
         }
 
-        
+
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,14 +42,14 @@ namespace football_blog.Controllers
                 return NotFound();
             }
 
-            var dog = await _context.Clubs
+            var club = await _context.Clubs
                 .FirstOrDefaultAsync(m => m.ClubId == id);
-            if (dog == null)
+            if (club == null)
             {
                 return NotFound();
             }
 
-            return View(dog);
+            return View(club);
         }
 
 
@@ -58,8 +58,8 @@ namespace football_blog.Controllers
             return View();
         }
 
-        
-        
+
+
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -70,8 +70,8 @@ namespace football_blog.Controllers
             {
                 if (uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
                 {
-                    
-                    club.ClubImage =  await _imageService.SaveImageAsync(uploadedFile, 0);
+
+                    club.ClubImage = await _imageService.SaveImageAsync(uploadedFile, 0);
                     _context.SaveChanges();
                 }
                 else
@@ -85,9 +85,9 @@ namespace football_blog.Controllers
             }
             return View(club);
         }
-        
 
-public async Task<IActionResult> Edit(int? id)
+
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -102,37 +102,47 @@ public async Task<IActionResult> Edit(int? id)
             return View(club);
         }
 
-        // POST: Dogs/Edit/5
+        // POST: Clubs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClubId,ClubName,ClubDescription,ClubImage")] Club club, IFormFile uploadedFile)
+         public async Task<IActionResult> Edit(int id, [Bind("ClubId,ClubName,ClubDescription,ClubImage")] Club club, IFormFile uploadedFile)
         {
             if (id != club.ClubId)
             {
                 return NotFound();
             }
 
+            Club club1 = await _context.Clubs
+                .FirstOrDefaultAsync(m => m.ClubId == id);
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(club);
+                    if (club.ClubDescription != club1.ClubDescription && club1.ClubDescription != null)
+                        club1.ClubDescription = club.ClubDescription;
+                    if (club.ClubName != club1.ClubName && club1.ClubName != null)
+                        club1.ClubName = club.ClubName;
+                    if (uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
+                    {
+                        club1.ClubImage = await _imageService.SaveImageAsync(uploadedFile, 0);
+                    }
+                    _context.Update(club1);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DogExists(club.ClubId))
+                    if (!ClubExists(club.ClubId))
                     {
-                        return NotFound();
+                        return RedirectPermanent("~/Error/Index?statusCode=404");
                     }
                     else
                     {
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectPermanent("~/Clubs");
             }
             return View(club);
         }
@@ -154,7 +164,7 @@ public async Task<IActionResult> Edit(int? id)
             return View(club);
         }
 
-        
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -165,7 +175,7 @@ public async Task<IActionResult> Edit(int? id)
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DogExists(int id)
+        private bool ClubExists(int id)
         {
             return _context.Clubs.Any(e => e.ClubId == id);
         }

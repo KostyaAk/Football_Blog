@@ -44,24 +44,24 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                    <li class="nav-item">
-                        <a class="nav-link"> @User.Identity.Name</a>
-                    </li>
-                                    <li class="nav-item">
-                                        <form method="post" asp-controller="Account" asp-action="Logout">
-                                            <input style="color:#000000" class="nav-link" type="submit" value="Выход" />
-                                        </form>
-                                    </li>
- }
-                                else
-                                {
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Login">Вход    </a>
-                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-controller="Account" asp-action="Register">Регистрация</a>
-                                    </li>
-}
+                            <li class="nav-item">
+                                <a class="nav-link"> @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <input style="color:#000000" class="nav-link" type="submit" value="Выход" />
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Вход    </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Register">Регистрация</a>
+                            </li>
+                        }
                     </ul>
 
                 </div>
@@ -97,7 +97,7 @@
                         <p class="mb-5">
                             Футбол - это игра, которая не знает пауз и не терпит остановок!
                         </p>
-                        <p><a asp-controller="Dogs" asp-action="Index" class="btn btn-white btn-outline-white">Описания клубов</a></p>
+                        <p><a asp-controller="Clubs" asp-action="Index" class="btn btn-white btn-outline-white">Описания клубов</a></p>
                     </div>
                 </div>
             </div>
@@ -111,11 +111,24 @@
             <div class="row justify-content-center mb-5 element-animate">
                 <div class="col-md-8 text-center">
                     <h2 class=" heading mb-4">Футбольные клубы</h2>
-                    <p class="mb-5 lead"> Футбольная команда — это 11 игроков стартового состава, запас, дубль, школа. Футбольный клуб же — это целая организация. Тут вам и президент, и тренер, и стадион с базой, и болельщики и многое-многое другое </p>
+                    <p class="mb-5 lead">Футбольная команда — это 11 игроков стартового состава, запас, дубль, школа. Футбольный клуб же — это целая организация. Тут вам и президент, и тренер, и стадион с базой, и болельщики и многое-многое другое</p>
                 </div>
             </div>
 
+            <div class="row no-gutters">
+                @foreach (var item in Model)
+                {
 
+                    <div class="col-md-4 element-animate">
+                        <a asp-controller="Clubs" asp-action="Details" asp-route-id="@item.ClubId" class="link-thumbnail">
+                            <h3>@Html.DisplayFor(modelItem => item.ClubName)</h3>
+                            <span class="ion-plus icon"></span>
+                            <img src="@Html.DisplayFor(modelItem => item.ClubImage)" alt="Image placeholder" class="img-fluid">
+                        </a>
+                    </div>
+
+                }
+            </div>
 
         </div>
     </section>
@@ -148,7 +161,6 @@
                         <li><a asp-controller="Home" asp-action="About">О нас</a></li>
                         <li><a asp-controller="Clubs" asp-action="Index">Клубы</a></li>
                         <li><a asp-controller="Posts" asp-action="Index">Блог</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
