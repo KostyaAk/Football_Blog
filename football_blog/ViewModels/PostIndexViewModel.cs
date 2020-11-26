@@ -5,7 +5,7 @@ namespace football_blog.ViewModels
 {
     public class PostIndexViewModel
     {
-        public IEnumerable<Tag> Topics { get; set; }
+        public IEnumerable<Tag> Tags { get; set; }
         public IEnumerable<Post> Posts { get; set; }
     }
 }
