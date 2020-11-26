@@ -38,7 +38,7 @@
                             <a class="nav-link active" asp-controller="Home" asp-action="About">О нас</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Породы</a>
+                            <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Клубы</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 @foreach (var item in Model)
                                 {
@@ -47,9 +47,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Posts" asp-action="Index">Блог</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Contact">Контакты</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
