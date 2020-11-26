@@ -24,6 +24,7 @@ namespace football_blog.Controllers
         private readonly SiteContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
         private readonly ILogger<PostsController> _logger;
+        List<Tag> _tags;
         public PostsController(UserManager<User> userManager, SiteContext context, IWebHostEnvironment appEnvironment, ILogger<PostsController> logger)
         {
             _logger = logger;
@@ -32,9 +33,29 @@ namespace football_blog.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int? TagId)
         {
-            return View(await _context.Posts.ToListAsync());
+            this._tags = await _context.Tags.ToListAsync();
+            PostIndexViewModel ivm;
+
+            if (TagId != null)
+            {
+                int id = (int)TagId;
+                List<Post> posts;
+                try
+                {
+                    posts = _context.Posts.Include(s => s.Tag).Where(s => s.TagId == TagId).ToList();
+                }
+                catch (Exception)
+                {
+                    _logger.LogError("Doesn't exist id. Controller:Posts. Action:Index");
+                    return RedirectPermanent("~/Error/Index?statusCode=404");
+                }
+                ivm = new PostIndexViewModel { Posts = posts, Tags = _tags };
+                return View(ivm);
+            }
+            ivm = new PostIndexViewModel { Posts = await _context.Posts.ToListAsync(), Tags = _tags };
+            return View(ivm);
 
         }
 
