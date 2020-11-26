@@ -23,7 +23,10 @@ namespace football_blog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<EmailService>();
+
             services.AddControllersWithViews();
+            services.AddTransient<IUserValidator<User>, CustomUserValidator>();
             services.AddDbContext<SiteContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -39,6 +42,14 @@ namespace football_blog
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("football_blog")));
             services.AddTransient<ISender, EmailService>();
             services.AddSingleton<ImageService>();
+            services.AddAuthentication()
+               .AddGoogle(options =>
+               {
+                   //options.ClientId = Configuration["Authentication:Google:ClientId"];
+                  // options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                      options.ClientId = "822625351685-35p3lib3eh36dhnrtt2so3n59l5saf08.apps.googleucsercontent.com";
+                      options.ClientSecret = "fD5jE4DXNTc6emdnsHIsbBcxc";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,15 +61,17 @@ namespace football_blog
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Error/ErrorPro");
                 app.UseHsts();
             }
+            app.UseStatusCodePagesWithReExecute("/Error/Index", "?statusCode={0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
