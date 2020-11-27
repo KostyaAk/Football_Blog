@@ -24,7 +24,7 @@ namespace football_blog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<EmailService>();
-
+            services.AddSignalR();
             services.AddControllersWithViews();
             services.AddTransient<IUserValidator<User>, CustomUserValidator>();
             services.AddDbContext<SiteContext>(options =>
@@ -79,6 +79,7 @@ namespace football_blog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<HabrDotNetHub>("/chathub");
             });
         }
     }
