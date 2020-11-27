@@ -24,13 +24,15 @@ namespace football_blog.Controllers
         private readonly SiteContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
         private readonly ILogger<PostsController> _logger;
+        private readonly ImageService _imageService;
         List<Tag> _tags;
-        public PostsController(UserManager<User> userManager, SiteContext context, IWebHostEnvironment appEnvironment, ILogger<PostsController> logger)
+        public PostsController(UserManager<User> userManager, SiteContext context, IWebHostEnvironment appEnvironment, ILogger<PostsController> logger, ImageService imageService)
         {
             _logger = logger;
             _userManager = userManager;
             _context = context;
             _appEnvironment = appEnvironment;
+            _imageService = imageService;
         }
 
         public async Task<IActionResult> Index(int? TagId)
@@ -117,64 +119,54 @@ namespace football_blog.Controllers
         public async Task<IActionResult> Create([Bind("PostId,Title,Text,TagId")] Post post, IFormFile uploadedFile)
         {
             if (ModelState.IsValid)
-            {
-                if (uploadedFile != null)
                 {
-                    string path = "/Files/posts/" + uploadedFile.FileName;
-                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    if (uploadedFile != null && uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
                     {
-                        await uploadedFile.CopyToAsync(fileStream);
+                        post.Image = await _imageService.SaveImageAsync(uploadedFile, 1);
                     }
-                    post.Image = path;
-                    _context.SaveChanges();
+                    else
+                    {
+                        ModelState.AddModelError("Image", "Некорректный формат");
+                        ViewData["tags"] = await _context.Tags.ToListAsync();
+                        return View(post);
+                    }
+                    var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                    post.User = user;
+                    post.DateTime = DateTime.Now;
+                    post.Tag = await _context.Tags.FindAsync(post.TagId);
+                    _context.Add(post);
+                    await _context.SaveChangesAsync();
+                
+                    return RedirectPermanent("~/Posts/Index");
                 }
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                post.User = user;
-                post.DateTime = DateTime.Now;
-                post.Tag = await _context.Tags.FindAsync(post.TagId);
-                _context.Add(post);
-                await _context.SaveChangesAsync();
-                return RedirectPermanent("~/Posts/Index");
-            }
-            return View(post);
+                return View(post);
         }
 
+
+        [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-
-            if (id == null)
-            {
-                _logger.LogError("Doesn't exist id. Controller:Post. Action:Edit. id = null");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
-            }
-
             var post = await _context.Posts.FindAsync(id);
             if (post == null)
             {
                 _logger.LogError("Doesn't exist post. Controller:Post. Action:Edit. post = null");
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
-            var user = await _userManager.FindByIdAsync(post.UserId);
-            if (User.Identity.Name.ToString() == user.UserName || User.IsInRole("admin"))
-            {
-                _logger.LogError("Doesn't exist user. Controller:Post. Action:Edit");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
-            }
-            return NotFound();
+
+            return View(post);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PostId,Title,Text")] Post post, IFormFile uploadedFile)
+        public async Task<IActionResult> Edit(int id, [Bind("PostId,Title,Text,Image")] Post post, IFormFile uploadedFile)
         {
-
             if (id != post.PostId)
             {
-                _logger.LogError("Doesn't exist id. Controller:Post. Action:Edit");
+                _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
-            Post post1 = await _context.Posts.FindAsync(post.PostId);
+            Post post1 = await _context.Posts.FirstOrDefaultAsync(m => m.PostId == post.PostId);
             if (ModelState.IsValid)
             {
                 try
@@ -183,14 +175,17 @@ namespace football_blog.Controllers
                         post1.Text = post.Text;
                     if (post.Title != post1.Title && post1 != null)
                         post1.Title = post.Title;
-                    if (post.Image != post1.Image && post != null)
+
+
+
+                    if (post.Image != post1.Image && post1.Image != null && uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
                     {
-                        string path = "/Files/" + uploadedFile.FileName;
-                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                        {
-                            await uploadedFile.CopyToAsync(fileStream);
-                        }
-                        post1.Image = path;
+                        post1.Image = await _imageService.SaveImageAsync(uploadedFile, 1);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Image", "Некорректный формат");
+                        return View(post1);
                     }
                     _context.Update(post1);
                     await _context.SaveChangesAsync();
@@ -199,7 +194,7 @@ namespace football_blog.Controllers
                 {
                     if (!PostExists(post.PostId))
                     {
-                        _logger.LogError("Doesn't exist db. Controller:Post. Action:Edit");
+                        _logger.LogError("Doesn't exist db. Controller:Article. Action:Edit");
                         return RedirectPermanent("~/Error/Index?statusCode=404");
                     }
                     else
@@ -207,7 +202,7 @@ namespace football_blog.Controllers
                         throw;
                     }
                 }
-                return RedirectPermanent("~/Home/Index");
+                return RedirectPermanent("~/");
             }
             return View(post);
         }
