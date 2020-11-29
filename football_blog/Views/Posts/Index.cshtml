@@ -94,7 +94,7 @@
                 <input type="submit" class="btn btn-sm btn-primary" value="OK" />
             </form>
             <p>
-                <a asp-action="Create">Create New</a>
+                <a style="color: #1861ac" asp-action="Create">Create New</a>
             </p>
             <div class="row">
                 @foreach (Post item in Model.Posts)
@@ -106,9 +106,9 @@
                             <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.PostId" class="mr-5"><img src="@Html.DisplayFor(modelItem => item.Image)" alt="Placeholder image" class="img-fluid"></a>
                             <div class="media-body">
                                 <span class="post-meta">@Html.DisplayFor(modelItem => item.DateTime)</span>
-                                <h3 class="mt-2 text-black"><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.PostId">@Html.DisplayFor(modelItem => item.Title)</a></h3>
-                                <p>@Html.DisplayFor(modelItem => item.Text)</p>
-                                <p><a asp-controller="Posts" asp-action="Details" asp-route-id="@item.PostId" class="btn btn-primary btn-sm">Read more</a></p>
+                                <h3 class="mt-2 text-black"><a style="color: #1861ac" asp-controller="Posts" asp-action="Details" asp-route-id="@item.PostId">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+                                <p >@Html.DisplayFor(modelItem => item.Text)</p>
+                                <p><a style="color: #FFF" asp-controller="Posts" asp-action="Details" asp-route-id="@item.PostId" class="btn btn-primary btn-sm">Read more</a></p>
                             </div>
                         </div>
                     </div>

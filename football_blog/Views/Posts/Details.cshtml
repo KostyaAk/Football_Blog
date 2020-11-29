@@ -5,7 +5,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>DogBlog</title>
+    <title>FootballBlog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -56,7 +56,7 @@
                                     <input style="color:#000000" class="nav-link" type="submit" value="Выход" />
                                 </form>
                             </li>
- }
+                        }
                         else
                         {
                             <li class="nav-item">
@@ -65,7 +65,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="Register">Регистрация</a>
                             </li>
-}
+                        }
                     </ul>
 
                 </div>
@@ -95,8 +95,8 @@
                 </dd>
                 @if (User.IsInRole("admin") || ViewData["UserName"] as string == User.Identity.Name)
                 {
-                    <a asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
-                    <a asp-action="Index">Back to List</a>
+                    <a style="color: #1861ac" asp-action="Edit" asp-route-id="@Model.PostId">Edit</a>
+                    <a style="color: #1861ac" asp-action="Index">Back to List</a>
                 }
 
             </div>
@@ -131,19 +131,19 @@
                             <li>
                                 <a href="">Логин:@item.User.UserName</a>
                                 <p>Коментарий:@item.Text</p>
-                                <p>Дата:@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
+                                <p class="text-muted utc-date">Дата:@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
                                 <br />
                             </li>
- }
+                        }
                         else
                         {
                             <li>
                                 <p>Логин:@item.User.UserName</p>
                                 <p>Коментарий:@item.Text</p>
-                                <p>Дата:@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
+                                <p class="text-muted utc-date">Дата:@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
                                 <br />
                             </li>
-}
+                        }
                     }
                 </ul>
             </div>
@@ -193,7 +193,7 @@
     <!-- END footer -->
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214" /></svg></div>
-
+    <script src="~/js/date.convert.js"></script>
     <script src="~/js/jquery-3.2.1.min.js"></script>
     <script src="~/js/popper.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
