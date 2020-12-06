@@ -46,10 +46,10 @@ namespace football_blog
                .AddGoogle(options =>
                {
                    //options.ClientId = Configuration["Authentication:Google:ClientId"];
-                  // options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                      options.ClientId = "822625351685-35p3lib3eh36dhnrtt2so3n59l5saf08.apps.googleucsercontent.com";
-                      options.ClientSecret = "fD5jE4DXNTc6emdnsHIsbBcxc";
-                });
+                   // options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                   options.ClientId = "822625351685-35p3lib3eh36dhnrtt2so3n59l5saf08.apps.googleusercontent.com";
+                   options.ClientSecret = "fD5jE4DXNTc6emdnsHIsbBxc";
+               });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,8 +77,14 @@ namespace football_blog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                   name: "MethodWithId",
+                   pattern: "{controller}/{action}/{id}");
+                endpoints.MapControllerRoute(
+                   name: "MethodWithNullId",
+                   pattern: "Posts/Index/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
                 endpoints.MapHub<HabrDotNetHub>("/chathub");
             });
         }

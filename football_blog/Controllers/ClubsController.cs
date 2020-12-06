@@ -35,13 +35,8 @@ namespace football_blog.Controllers
 
 
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var club = await _context.Clubs
                 .FirstOrDefaultAsync(m => m.ClubId == id);
             if (club == null)
@@ -87,7 +82,7 @@ namespace football_blog.Controllers
         }
 
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
@@ -109,10 +104,6 @@ namespace football_blog.Controllers
         [ValidateAntiForgeryToken]
          public async Task<IActionResult> Edit(int id, [Bind("ClubId,ClubName,ClubDescription,ClubImage")] Club club, IFormFile uploadedFile)
         {
-            if (id != club.ClubId)
-            {
-                return NotFound();
-            }
 
             Club club1 = await _context.Clubs
                 .FirstOrDefaultAsync(m => m.ClubId == id);
@@ -147,13 +138,8 @@ namespace football_blog.Controllers
             return View(club);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var club = await _context.Clubs
                 .FirstOrDefaultAsync(m => m.ClubId == id);
             if (club == null)

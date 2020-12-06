@@ -61,7 +61,7 @@ namespace football_blog.Controllers
 
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -207,14 +207,8 @@ namespace football_blog.Controllers
             return View(post);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                _logger.LogError("Doesn't exist id. Controller:Post. Action:Delete");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
-            }
-
             var post = await _context.Posts
                 .FirstOrDefaultAsync(m => m.PostId == id);
             if (post == null)
