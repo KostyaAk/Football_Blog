@@ -20,7 +20,7 @@ namespace football_blog.Service
         public async Task SendMessage(string email, string subject, string message)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("FootBallBlog", "novolukoml_minsk@mail.ru"));
+            emailMessage.From.Add(new MailboxAddress("FootBallBlog", _configuration["Email:address"]));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -30,8 +30,8 @@ namespace football_blog.Service
 
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("smtp.mail.com", 465, false);
-                await client.AuthenticateAsync("novolukoml_minsk@mail.ru", "1a2b3c4dBsuir");
+                await client.ConnectAsync("smtp.mail.ru", 25, false);
+                await client.AuthenticateAsync(_configuration["Email:address"], _configuration["Email:password"]);
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

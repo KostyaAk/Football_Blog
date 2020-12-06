@@ -11,6 +11,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using Azure.Identity;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
 
 namespace football_blog
 {
@@ -19,16 +23,7 @@ namespace football_blog
         public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            Log.Logger = new LoggerConfiguration()
-                .Enrich.FromLogContext()
-                .WriteTo.File("Logs\\AllLogs.txt")
-                .WriteTo.Logger(lc => lc
-                .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
-                .WriteTo.File("Logs\\ErrorLogs.txt"))
-                .WriteTo.Logger(lc => lc
-                .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
-                .WriteTo.Console())
-                .CreateLogger();
+            
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -36,7 +31,21 @@ namespace football_blog
                 {
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    //await CustomIdentityApp.RoleInitializer.InitializeAsync(userManager, rolesManager);
+                    var config = services.GetRequiredService<IConfiguration>();
+
+                    Log.Logger = new LoggerConfiguration()
+                    .Enrich.FromLogContext()
+                    .WriteTo.File(config["AllLogs"])
+                    .WriteTo.Logger(lc => lc
+                    .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
+                    .WriteTo.File(config["ErrorLogs"]))
+                    .WriteTo.Logger(lc => lc
+                    .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
+                    .WriteTo.Console())
+                    .CreateLogger();
+
+                    await football_blog.Models.RoleInitializer.InitializeAsync(userManager, rolesManager);
+
                 }
                 catch (Exception ex)
                 {
@@ -49,12 +58,26 @@ namespace football_blog
         host.Run();
     }
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.UseStartup<Startup>();
-        })
-            .UseSerilog();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((ctx, builder) =>
+            {
+                var keyVaultEndpoint = GetKeyVaultEndpoint();
+                if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                {
+                    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                    var keyVaultClient = new KeyVaultClient(
+                        new KeyVaultClient.AuthenticationCallback(
+                            azureServiceTokenProvider.KeyVaultTokenCallback));
+                    builder.AddAzureKeyVault(
+                    keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                }
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            })
+                .UseSerilog();
+        private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("FootballKey");
     }
 }
