@@ -30,7 +30,7 @@ namespace football_blog.Service
 
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("smtp.mail.ru", 25, false);
+                await client.ConnectAsync(_configuration["Email:port"], Convert.ToInt32(_configuration["Email:service"]), false);
                 await client.AuthenticateAsync(_configuration["Email:address"], _configuration["Email:password"]);
                 await client.SendAsync(emailMessage);
 
