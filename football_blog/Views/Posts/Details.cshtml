@@ -107,48 +107,49 @@
             <div style="background-color:white;border-radius:5px;margin-top:20px">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <dd>
+                <dd>
 
-                        <div class="form-group">
-                            <input type="hidden" asp-for="@Model.PostId" class="form-control" id="PostInput" />
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label"> Коментарии</label>
-                            <input asp-for="Text" type="text" class="form-control" style="height:auto;" value=" " id="TextInput" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-primary" id="sendButton" />
-                        </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="@Model.PostId" class="form-control" id="PostInput" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Коментарии</label>
+                        <input asp-for="Text" type="text" class="form-control" style="height:auto;" value=" " id="TextInput" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" id="sendButton" />
+                    </div>
 
-                    </dd>
+                </dd>
                 }
                 <ul style="min-height:300px;height:auto;background-color:white; border-radius:5px;" id="messagesList">
                     @foreach (var item in ViewData["Comment"] as IList<football_blog.Models.Comment>)
                     {
 
-                        @if (User.IsInRole("specialist"))
+                    @if (User.IsInRole("specialist"))
                         {
-                            <li>
-                                <a href="">Логин:@item.User.UserName</a>
-                                <p>Коментарий:@item.Text</p>
-                                <p class="text-muted utc-date">Дата:@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
-                                <br />
-                            </li>
+                    <li>
+                        <a href="">Логин:@item.User.UserName</a>
+                        <p>Коментарий:@item.Text</p>
+                        <p class="utc-date">@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
+                        <br />
+                    </li>
                         }
                         else
                         {
-                            <li>
-                                <p>Логин:@item.User.UserName</p>
-                                <p>Коментарий:@item.Text</p>
-                                <p class="text-muted utc-date">Дата:@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
-                                <br />
-                            </li>
+                    <li>
+                        <p>Логин:@item.User.UserName</p>
+                        <p>Коментарий:@item.Text</p>
+                        <p class="utc-date">@item.DateTime.ToString("MM/dd/yyyy HH:mm:ss")</p>
+                        <br />
+                    </li>
                         }
                     }
                 </ul>
             </div>
             <script src="~/js/signalr/dist/browser/signalr.js"></script>
             <script src="~/js/chat.js"></script>
+            <script src="~/js/date.convert.js"></script>
         </div>
 
     </section>

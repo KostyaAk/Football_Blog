@@ -30,9 +30,7 @@ namespace football_blog.Service
         {
             var user = await _userManager.FindByNameAsync(Context.User.Identity.Name);
             Comment comment = new Comment();
-            DateTime timeUtc = DateTime.UtcNow;
-            TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
-            comment.DateTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
+            comment.DateTime = DateTime.UtcNow;
             comment.User = user;
             comment.PostId = Int32.Parse(ArticleID);
             comment.Text = Text;

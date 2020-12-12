@@ -37,7 +37,7 @@ namespace football_blog
 
             })
                  .AddEntityFrameworkStores<SiteContext>()
-                .AddDefaultTokenProviders();
+                 .AddDefaultTokenProviders();
             services.AddDbContext<SiteContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("football_blog")));
             services.AddTransient<ISender, EmailService>();

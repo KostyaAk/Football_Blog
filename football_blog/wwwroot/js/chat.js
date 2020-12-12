@@ -8,7 +8,7 @@ document.getElementById("sendButton").disabled = true;
 connection.on("ReceiveMessage", function (UserName, Text, DateTime) {
     var d = new Date();
     var s = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-    var encodedMsg = "<p>Логин:".concat(UserName, "</p>", "<p>Коментарий:", Text, "</p>", "<p>Дата:", s, "</p><br/>");
+    var encodedMsg = "<p>Логин:".concat(UserName, "</p>", "<p>Коментарий:", Text, "</p>", "<p>", s, "</p><br/>");
     var li = document.createElement("li");
     li.innerHTML = encodedMsg;
     document.getElementById("messagesList").appendChild(li);

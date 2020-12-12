@@ -84,10 +84,6 @@ namespace football_blog.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
             var club = await _context.Clubs.FindAsync(id);
             if (club == null)
