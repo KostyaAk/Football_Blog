@@ -8,8 +8,8 @@ namespace football_blog.Models
     {
         public static async Task InitializeAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
-            string adminEmail = "admin@gmail.com";
-            string password = "_Aa123456";
+            string adminEmail = "kostya_akulich_2000@mail.ru";
+            string password = "Akula!228";
             if (await roleManager.FindByNameAsync("admin") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("admin"));

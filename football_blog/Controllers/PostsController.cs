@@ -63,12 +63,6 @@ namespace football_blog.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                _logger.LogError("Doesn't exist id. Controller:Post. Action:Details");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
-            }
-
             var post = await _context.Posts
                 .FirstOrDefaultAsync(m => m.PostId == id);
             if (post == null)
